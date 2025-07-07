@@ -266,8 +266,8 @@ main:not(.animate) {
 }
 
 .hero-description:not(.animate) {
-    opacity: 0;
-    transform: translateX(-50px);
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .community-image:not(.animate) {
@@ -350,22 +350,7 @@ main::after {
 }
 
 main.animate::after {
-    animation: slideInDiagonal 0.8s ease-out 0.3s both, morph-diagonal 8s ease-in-out infinite 1s;
-}
-
-@keyframes morph-diagonal {
-    0%, 100% {
-        transform: skewX(0deg) skewY(0deg);
-    }
-    25% {
-        transform: skewX(2deg) skewY(1deg);
-    }
-    50% {
-        transform: skewX(0deg) skewY(2deg);
-    }
-    75% {
-        transform: skewX(-1deg) skewY(0deg);
-    }
+    animation: slideInDiagonal 0.8s ease-out 0.3s both;
 }
 
 /* Hero section */
@@ -373,7 +358,7 @@ main.animate::after {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Changed from center to prevent movement */
     padding: 0 20px;
     margin-bottom: 80px;
     margin-top: 1px;
@@ -481,31 +466,27 @@ main.animate::after {
     margin-bottom: 30px;
     max-width: 600px;
     font-weight: 400;
-    /* Animation removed - will be triggered by scroll */
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    min-height: 90px; /* Fixed height to prevent layout shift during typing */
 }
 
-.hero-description.animate {
-    animation: slideInLeft 0.8s ease-out 0.4s both;
+/* Typewriter cursor - inline with text */
+.typewriter-cursor {
+    display: inline-block;
+    color: #ffd700;
+    font-weight: bold;
+    font-style: normal;
+    margin-left: 2px;
+    animation: none;
 }
 
-.hero-description::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 2px;
-    height: 100%;
-    background: #ffd700;
-    /* Animation removed - will be triggered by scroll */
+/* Typewriter cursor animation */
+.hero-description.typing .typewriter-cursor {
+    animation: typewriter-blink 0.8s infinite step-end;
 }
 
-.hero-description.animate::after {
-    animation: typewriter-cursor 1s infinite step-end 1s;
-}
-
-@keyframes typewriter-cursor {
+@keyframes typewriter-blink {
     0%, 50% {
         opacity: 1;
     }
@@ -514,10 +495,22 @@ main.animate::after {
     }
 }
 
+/* Hide cursor after typing is complete */
+.hero-description.typing-complete .typewriter-cursor {
+    animation: fadeOut 0.5s ease-out both;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
 /* Hero image */
 .hero-image {
     flex: 1.1;
     text-align: center;
+    margin-top: 20px; /* Add top margin to visually align with text */
 }
 
 .community-image {
@@ -1151,6 +1144,128 @@ main.animate::after {
     background-color: #333;
     transform: translateY(-2px) scale(1.05);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Work in Progress Modal */
+.work-in-progress-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+    backdrop-filter: blur(5px);
+    transition: opacity 0.3s ease;
+}
+
+.work-in-progress-content {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 450px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    animation: slideInScale 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.work-in-progress-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(2px 2px at 20% 30%, rgba(255, 215, 0, 0.3), transparent),
+        radial-gradient(2px 2px at 80% 70%, rgba(255, 215, 0, 0.2), transparent),
+        radial-gradient(1px 1px at 50% 20%, rgba(255, 215, 0, 0.4), transparent),
+        radial-gradient(1px 1px at 70% 80%, rgba(255, 215, 0, 0.3), transparent);
+    animation: sparkle-move 4s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.work-in-progress-content > * {
+    position: relative;
+    z-index: 2;
+}
+
+.work-in-progress-content h3 {
+    color: #ffd700;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.work-in-progress-content p {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.work-in-progress-content p:last-of-type {
+    margin-bottom: 25px;
+    font-weight: 600;
+    color: #333;
+}
+
+.close-work-progress-btn {
+    background-color: #ffd700;
+    color: #000;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.close-work-progress-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.close-work-progress-btn:hover::before {
+    width: 150px;
+    height: 150px;
+}
+
+.close-work-progress-btn:hover {
+    background-color: #ffed4a;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideInScale {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 /* =========================

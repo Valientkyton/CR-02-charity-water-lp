@@ -37,10 +37,7 @@
             <!-- Left side with large heading and description -->
             <div class="hero-text">
                 <h2 class="main-heading">Big Change Starts with a Small Tap</h2>
-                <p class="hero-description">
-                    Every dollar donated tells a story. See the faces, the places, and the real-life change 
-                    your donation brings – one drop, one family at a time.
-                </p>
+                <p class="hero-description">Every dollar donated tells a story. See the faces, the places, and the real-life change your donation brings – one drop, one family at a time.</p>
             </div>
             
             <!-- Right side with community image -->
@@ -260,21 +257,141 @@
             }
         });
 
-        // Scroll-triggered animations using Intersection Observer
-        function initScrollAnimations() {
+        // Navigation "Work in Progress" functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all navigation links
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            // Add click event listeners to each navigation link
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent default link behavior
+                    
+                    // Show work in progress message
+                    showWorkInProgressMessage();
+                });
+            });
+        });
+
+        // Function to show work in progress message
+        function showWorkInProgressMessage() {
+            // Create modal/popup
+            const modal = document.createElement('div');
+            modal.className = 'work-in-progress-modal';
+            modal.innerHTML = `
+                <div class="work-in-progress-content">
+                    <h3>🚧 Work in Progress 🚧</h3>
+                    <p>This section of the website is currently under development.</p>
+                    <p>Please check back later for updates!</p>
+                    <button onclick="closeWorkInProgressModal()" class="close-work-progress-btn">Got it!</button>
+                </div>
+            `;
+            
+            // Add to body
+            document.body.appendChild(modal);
+            
+            // Add animation
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.style.opacity = '1';
+            }, 10);
+            
+            // Auto-remove after 4 seconds
+            setTimeout(() => {
+                if (modal.parentElement) {
+                    closeWorkInProgressModal();
+                }
+            }, 4000);
+        }
+
+        // Function to close work in progress modal
+        function closeWorkInProgressModal() {
+            const modal = document.querySelector('.work-in-progress-modal');
+            if (modal) {
+                modal.style.opacity = '0';
+                setTimeout(() => {
+                    if (modal.parentElement) {
+                        modal.remove();
+                    }
+                }, 300);
+            }
+        }
+
+        // Typewriter effect for hero description
+        function initTypewriterEffect() {
+            const heroDescription = document.querySelector('.hero-description');
+            if (!heroDescription) return;
+            
+            // Store the original text and normalize whitespace
+            const originalText = heroDescription.textContent.trim().replace(/\s+/g, ' ');
+            
+            // Clear the content immediately and create typewriter structure
+            heroDescription.innerHTML = '<span class="typed-text"></span><span class="typewriter-cursor">|</span>';
+            
+            const typedTextElement = heroDescription.querySelector('.typed-text');
+            const cursorElement = heroDescription.querySelector('.typewriter-cursor');
+            
+            // Add typing class to show cursor
+            heroDescription.classList.add('typing');
+            
+            // Typewriter parameters
+            const typingSpeed = 35; // milliseconds per character
+            const pauseBeforeStart = 400; // shorter pause since no slide animation
+            
+            // Start typing after a delay
+            setTimeout(() => {
+                let currentIndex = 0;
+                
+                function typeNextCharacter() {
+                    if (currentIndex < originalText.length) {
+                        const char = originalText[currentIndex];
+                        typedTextElement.textContent += char;
+                        currentIndex++;
+                        
+                        // Use consistent timing for all characters
+                        setTimeout(typeNextCharacter, typingSpeed);
+                    } else {
+                        // Typing complete
+                        heroDescription.classList.remove('typing');
+                        heroDescription.classList.add('typing-complete');
+                        
+                        // Remove cursor after fade out
+                        setTimeout(() => {
+                            cursorElement.remove();
+                            heroDescription.classList.remove('typing-complete');
+                        }, 1000);
+                    }
+                }
+                
+                // Start typing
+                typeNextCharacter();
+            }, pauseBeforeStart);
+        }
+
+        // Initialize typewriter effect when hero description comes into view
+        function initScrollAnimationsWithTypewriter() {
             // Create intersection observer
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Add animate class when element comes into view
-                        entry.target.classList.add('animate');
-                        // Optional: Stop observing after animation triggers
+                        // Special handling for hero description - skip slide animation
+                        if (entry.target.classList.contains('hero-description')) {
+                            // Start typewriter effect immediately, no slide animation
+                            setTimeout(() => {
+                                initTypewriterEffect();
+                            }, 200); // Minimal delay for smooth transition
+                        } else {
+                            // Normal slide animation for other elements
+                            entry.target.classList.add('animate');
+                        }
+                        
+                        // Stop observing after animation triggers
                         observer.unobserve(entry.target);
                     }
                 });
             }, {
-                threshold: 0.1, // Trigger when 10% of element is visible
-                rootMargin: '0px 0px -50px 0px' // Trigger slightly before element fully enters
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
             });
 
             // Observe all elements that should animate on scroll
@@ -300,8 +417,8 @@
             });
         }
 
-        // Initialize scroll animations when page loads
-        document.addEventListener('DOMContentLoaded', initScrollAnimations);
+        // Replace the original scroll animations with the new typewriter version
+        document.addEventListener('DOMContentLoaded', initScrollAnimationsWithTypewriter);
     </script>
 </body>
 </html>
