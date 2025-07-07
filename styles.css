@@ -1156,24 +1156,295 @@ main.animate::after {
 /* =========================
    Responsive Design Fixes
    ========================= */
+
+/* Tablet and small desktop styles (768px to 1024px) */
+@media (max-width: 1024px) {
+  .header-content {
+    padding: 0 15px;
+  }
+  
+  .hero-section {
+    padding: 0 15px;
+  }
+  
+  .main-heading {
+    font-size: 55px;
+    letter-spacing: -1.5px;
+  }
+  
+  .hero-description {
+    font-size: 24px;
+  }
+  
+  .nav-menu {
+    gap: 60px;
+  }
+  
+  .nav-menu a {
+    font-size: 15px;
+    padding: 8px 25px;
+    min-width: 120px;
+  }
+}
+
+/* Tablet portrait styles (768px and below) */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .logo-horizontal {
+    height: 60px;
+  }
+  
+  .donate-btn {
+    font-size: 14px;
+    padding: 12px 20px;
+    min-width: 100px;
+  }
+  
+  .nav-menu {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav-menu a {
+    font-size: 14px;
+    padding: 10px 20px;
+    min-width: 100px;
+  }
+  
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0 15px;
+  }
+  
+  .hero-text {
+    padding-right: 0;
+    margin-bottom: 30px;
+  }
+  
+  .main-heading {
+    font-size: 40px;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+  }
+  
+  .hero-description {
+    font-size: 20px;
+    line-height: 1.4;
+  }
+  
+  .hero-image {
+    margin-top: 20px;
+  }
+  
+  .community-image {
+    max-width: 100%;
+    max-height: 300px;
+    width: 100%;
+    border-radius: 12px;
+  }
+  
+  .quote-section {
+    padding: 0 15px;
+  }
+  
+  .quote-section blockquote {
+    padding: 40px 20px;
+    margin: 0 10px;
+  }
+  
+  .quote-section blockquote::before {
+    font-size: 80px;
+    top: -5px;
+    left: -5px;
+  }
+  
+  .quote-section blockquote::after {
+    font-size: 80px;
+    bottom: -30px;
+    right: -5px;
+  }
+  
+  .quote-text {
+    font-size: 20px;
+    margin: 20px 20px 15px 20px;
+    line-height: 1.4;
+  }
+  
+  .quote-author {
+    font-size: 16px;
+  }
+  
+  .donate-section {
+    padding: 0 15px;
+    margin-top: 60px;
+  }
+  
+  .donate-heading {
+    font-size: 36px;
+    margin-bottom: 15px;
+  }
+  
+  .donate-description {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .donate-buttons {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .donate-amount-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    min-width: 100px;
+  }
+  
+  .custom-amount-container {
+    margin-top: 20px;
+    padding: 20px;
+  }
+  
+  .custom-amount-input {
+    font-size: 18px;
+    width: 150px;
+    padding: 10px 15px;
+  }
+  
+  .custom-amount-buttons {
+    gap: 10px;
+  }
+  
+  .confirm-amount-btn, .cancel-amount-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .suggested-text {
+    font-size: 13px;
+  }
+  
+  .suggested-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+/* Mobile landscape styles (600px and below) */
+@media (max-width: 600px) {
+  .header-content {
+    padding: 10px;
+  }
+  
+  .logo-horizontal {
+    height: 50px;
+  }
+  
+  .donate-btn {
+    font-size: 13px;
+    padding: 10px 15px;
+    min-width: 80px;
+  }
+  
+  .nav-menu {
+    gap: 10px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .nav-menu a {
+    font-size: 13px;
+    padding: 8px 15px;
+    min-width: 80px;
+  }
+  
+  .main-heading {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+  
+  .hero-description {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+  
+  .quote-section blockquote {
+    padding: 30px 15px;
+    margin: 0 5px;
+  }
+  
+  .quote-section blockquote::before {
+    font-size: 60px;
+    top: -3px;
+    left: -3px;
+  }
+  
+  .quote-section blockquote::after {
+    font-size: 60px;
+    bottom: -25px;
+    right: -3px;
+  }
+  
+  .quote-text {
+    font-size: 16px;
+    margin: 15px 15px 10px 15px;
+  }
+  
+  .quote-author {
+    font-size: 14px;
+  }
+  
+  .donate-heading {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  
+  .donate-description {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .donate-buttons {
+    gap: 10px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .donate-amount-btn {
+    padding: 10px 15px;
+    font-size: 14px;
+    min-width: 80px;
+  }
+}
+
+/* Very small screens (480px and below) */
 @media (max-width: 480px) {
   /* Make header content stack vertically on very small screens */
   .header-content {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 8px;
-    padding: 0 8px;
+    padding: 8px;
   }
   .logo-horizontal {
     height: 40px;
   }
   .donate-btn {
-    font-size: 13px;
-    padding: 10px 12px;
-    min-width: 90px;
+    font-size: 12px;
+    padding: 8px 12px;
+    min-width: 70px;
   }
   nav {
-    padding: 10px 0;
+    padding: 8px 0;
   }
   .nav-menu {
     gap: 5px;
@@ -1183,108 +1454,129 @@ main.animate::after {
   }
   .nav-menu a {
     font-size: 11px;
-    padding: 7px 8px;
+    padding: 6px 8px;
     min-width: 60px;
-    min-height: 36px;
+    min-height: 32px;
   }
   main {
-    padding: 10px 0 20px 0;
+    padding: 8px 0 16px 0;
   }
   .hero-section {
     flex-direction: column;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     padding: 0 5px;
   }
   .hero-text {
     padding-right: 0;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
   }
   .main-heading {
-    font-size: 22px;
-    margin-bottom: 10px;
+    font-size: 20px;
+    margin-bottom: 8px;
     letter-spacing: -0.5px;
+    line-height: 1.1;
   }
   .hero-description {
-    font-size: 13px;
+    font-size: 12px;
     max-width: 100%;
     line-height: 1.3;
+    margin-bottom: 16px;
   }
   .hero-image {
-    margin-top: 10px;
-    min-height: 120px;
+    margin-top: 8px;
+    min-height: 100px;
   }
   .community-image {
     max-width: 100%;
-    min-height: 120px;
+    min-height: 100px;
     width: 100%;
-    border-radius: 8px;
+    border-radius: 6px;
   }
   .quote-section {
     padding: 0 5px;
+    margin-bottom: 16px;
   }
-  .quote-section blockquote::before,
+  
+  .quote-section blockquote {
+    padding: 20px 10px;
+    margin: 0 2px;
+  }
+  
+  .quote-section blockquote::before {
+    font-size: 24px;
+    top: -2px;
+    left: -1px;
+  }
+  
   .quote-section blockquote::after {
-    font-size: 32px;
-    left: -2px;
-    right: -2px;
-    top: -5px;
-    bottom: -5px;
+    font-size: 24px;
+    bottom: -12px;
+    right: -1px;
   }
   .quote-text {
-    font-size: 13px;
-    margin: 10px 10px 8px 10px;
+    font-size: 11px;
+    margin: 8px 8px 6px 8px;
     line-height: 1.3;
   }
   .quote-author {
-    font-size: 12px;
+    font-size: 10px;
   }
   .donate-section {
     padding: 0 5px;
-    margin-top: 20px;
+    margin-top: 16px;
   }
   .donate-heading {
-    font-size: 18px;
-    margin-bottom: 8px;
+    font-size: 16px;
+    margin-bottom: 6px;
   }
   .donate-description {
-    font-size: 12px;
-    margin-bottom: 10px;
+    font-size: 11px;
+    margin-bottom: 12px;
+    line-height: 1.3;
   }
   .donate-buttons {
-    gap: 8px;
+    gap: 6px;
     flex-direction: column;
     align-items: stretch;
   }
   .donate-amount-btn {
-    padding: 10px 8px;
-    font-size: 13px;
-    min-width: 70px;
+    padding: 8px 6px;
+    font-size: 12px;
+    min-width: 60px;
   }
   .custom-amount-container {
-    margin-top: 10px;
-    padding: 10px;
+    margin-top: 8px;
+    padding: 8px;
   }
   .custom-amount-input {
-    font-size: 14px;
-    width: 100px;
-    padding: 6px 8px;
+    font-size: 12px;
+    width: 80px;
+    padding: 5px 6px;
   }
   .custom-amount-buttons {
-    gap: 8px;
+    gap: 6px;
   }
   .confirm-amount-btn, .cancel-amount-btn {
-    padding: 8px 12px;
-    font-size: 13px;
+    padding: 6px 10px;
+    font-size: 11px;
   }
   .suggested-text {
-    font-size: 11px;
+    font-size: 10px;
+    margin-bottom: 8px;
   }
   .suggested-btn {
-    font-size: 11px;
-    padding: 5px 8px;
+    font-size: 10px;
+    padding: 4px 6px;
+  }
+  
+  /* Adjust diagonal accent for mobile */
+  main::after {
+    border-left: 200px solid transparent;
+    border-bottom: 150px solid #ffd700;
   }
 }
+
 /* End responsive fixes */
 
 /* Additional Creative Effects */
