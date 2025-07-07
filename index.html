@@ -1,47 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic page setup -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Landing Page</title>
+    <title>Charity: Water - Big Change Starts with a Small Tap</title>
+    <!-- Link to our CSS file -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Hero Section: This is the main banner at the top of the page -->
-    <section class="hero">
-        <!-- Main headline -->
-        <h1>Clean Water for Everyone</h1>
-        <!-- Subheadline -->
-        <p>Join us in bringing safe, clean water to communities in need.</p>
-    </section>
-
-    <!-- Story Section: This tells the story of the nonprofit -->
-    <section class="story">
-        <h2>Our Story</h2>
-        <p>
-         
-    </section>
-
-    <!-- Real-World Impact Story Section -->
-    <section class="impact-story">
-        <!-- Section headline -->
-        <h2>Real Impact: Meet Amina</h2>
-        <!-- Container for image and text -->
-        <div class="impact-content">
-            <!-- Impact image -->
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Amina smiling with clean water" class="impact-image">
-            <!-- Impact story text -->
-            <p>
-                Amina used to walk miles every day to collect water for her family. Thanks to your support, her village now has a clean water well. Amina can go to school and her family is healthier and happier.
-            </p>
+    <!-- Header section with logo and donate button -->
+    <header>
+        <div class="header-content">
+            <!-- Logo -->
+            <div class="logo-section">
+                <img src="img/cw_horizontal_black.png" alt="Charity Water Logo" class="logo-horizontal">
+            </div>
+            <!-- Donate button -->
+            <a href="#donate" class="donate-btn">Donate</a>
         </div>
-    </section>
+    </header>
 
-    <!-- Call-to-Action Section: This encourages visitors to take action -->
-    <section class="call-to-action">
-        <h2>Make a Difference</h2>
-        <p>Your support can help save lives. Every donation brings us closer to a world with clean water for all.</p>
-        <a href="#" class="donate-button">Donate Now</a>
-    </section>
+    <!-- Navigation menu -->
+    <nav>
+        <ul class="nav-menu">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#impact">Impact</a></li>
+            <li><a href="#goals">Goals</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content area -->
+    <main>
+        <div class="hero-section">
+            <!-- Left side with large heading and description -->
+            <div class="hero-text">
+                <h2 class="main-heading">Big Change Starts with a Small Tap</h2>
+                <p class="hero-description">
+                    Every dollar donated tells a story. See the faces, the places, and the real-life change 
+                    your donation brings – one drop, one family at a time.
+                </p>
+            </div>
+            
+            <!-- Right side with community image -->
+            <div class="hero-image">
+                <img src="img/uganda6-e1569333222614.png" alt="Community celebrating clean water access" class="community-image">
+            </div>
+        </div>
+
+        <!-- Quote section -->
+        <div class="quote-section">
+            <blockquote>
+                <p class="quote-text">
+                    I wanted to give more than money — I wanted to give hope. Seeing the impact made it real.
+                </p>
+                <cite class="quote-author">— Maya, college student</cite>
+            </blockquote>
+        </div>
+
+        <!-- Donate section -->
+        <div id="donate" class="donate-section">
+            <h2 class="donate-heading">Make a Difference Today</h2>
+            <p class="donate-description">
+                Your donation helps provide clean water to communities in need. Every contribution matters.
+            </p>
+            <div class="donate-buttons">
+                <button class="donate-amount-btn" data-amount="25">$25</button>
+                <button class="donate-amount-btn" data-amount="50">$50</button>
+                <button class="donate-amount-btn" data-amount="100">$100</button>
+                <button class="donate-amount-btn" id="other-amount-btn">Other Amount</button>
+            </div>
+            
+            <!-- Custom amount input (hidden by default) -->
+            <div id="custom-amount-container" class="custom-amount-container" style="display: none;">
+                <div class="custom-amount-input-wrapper">
+                    <span class="currency-symbol">$</span>
+                    <input type="number" id="custom-amount-input" class="custom-amount-input" 
+                           placeholder="Enter amount" min="1" max="10000">
+                </div>
+                <div class="custom-amount-buttons">
+                    <button class="confirm-amount-btn" id="confirm-amount">Confirm</button>
+                    <button class="cancel-amount-btn" id="cancel-amount">Cancel</button>
+                </div>
+                <div class="suggested-amounts">
+                    <p class="suggested-text">Popular amounts:</p>
+                    <div class="suggested-buttons">
+                        <button class="suggested-btn" data-suggested="35">$35</button>
+                        <button class="suggested-btn" data-suggested="75">$75</button>
+                        <button class="suggested-btn" data-suggested="150">$150</button>
+                        <button class="suggested-btn" data-suggested="250">$250</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript for interactive donation functionality -->
+    <script>
+        // Get elements
+        const otherAmountBtn = document.getElementById('other-amount-btn');
+        const customAmountContainer = document.getElementById('custom-amount-container');
+        const customAmountInput = document.getElementById('custom-amount-input');
+        const confirmBtn = document.getElementById('confirm-amount');
+        const cancelBtn = document.getElementById('cancel-amount');
+        const donateAmountBtns = document.querySelectorAll('.donate-amount-btn[data-amount]');
+        const suggestedBtns = document.querySelectorAll('.suggested-btn');
+
+        // Show custom amount input
+        otherAmountBtn.addEventListener('click', function() {
+            customAmountContainer.style.display = 'block';
+            customAmountInput.focus();
+            
+            // Add smooth animation
+            customAmountContainer.style.opacity = '0';
+            customAmountContainer.style.transform = 'translateY(-10px)';
+            setTimeout(() => {
+                customAmountContainer.style.opacity = '1';
+                customAmountContainer.style.transform = 'translateY(0)';
+            }, 10);
+            
+            // Scroll to the custom amount container
+            setTimeout(() => {
+                customAmountContainer.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }, 100);
+        });
+
+        // Handle suggested amount clicks
+        suggestedBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const amount = this.getAttribute('data-suggested');
+                customAmountInput.value = amount;
+                customAmountInput.focus();
+            });
+        });
+
+        // Confirm custom amount
+        confirmBtn.addEventListener('click', function() {
+            const amount = customAmountInput.value;
+            if (amount && amount > 0) {
+                // Remove selected class from all buttons
+                document.querySelectorAll('.donate-amount-btn').forEach(b => b.classList.remove('selected'));
+                // Add selected class to other amount button
+                otherAmountBtn.classList.add('selected');
+                hideCustomAmountContainer();
+                showConfirmationMessage(amount);
+            } else {
+                alert('Please enter a valid amount');
+            }
+        });
+
+        // Cancel custom amount
+        cancelBtn.addEventListener('click', function() {
+            hideCustomAmountContainer();
+        });
+
+        // Hide custom amount container
+        function hideCustomAmountContainer() {
+            // Add smooth closing animation
+            customAmountContainer.style.opacity = '0';
+            customAmountContainer.style.transform = 'translateY(-10px) scale(0.95)';
+            setTimeout(() => {
+                customAmountContainer.style.display = 'none';
+                customAmountInput.value = '';
+                // Reset transform for next opening
+                customAmountContainer.style.transform = 'translateY(-10px) scale(1)';
+            }, 300);
+        }
+
+        // Handle preset amount button clicks
+        donateAmountBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const amount = this.getAttribute('data-amount');
+                // Remove selected class from all buttons
+                document.querySelectorAll('.donate-amount-btn').forEach(b => b.classList.remove('selected'));
+                // Add selected class to clicked button
+                this.classList.add('selected');
+                showConfirmationMessage(amount);
+            });
+        });
+
+        // Show confirmation message
+        function showConfirmationMessage(amount) {
+            const message = document.createElement('div');
+            message.className = 'donation-confirmation';
+            message.innerHTML = `
+                <div class="confirmation-content">
+                    <h3>Thank you for choosing to donate $${amount}!</h3>
+                    <p>Your contribution will help provide clean water to communities in need.</p>
+                    <button onclick="resetDonationButtons(); this.parentElement.parentElement.remove()" class="close-confirmation">Continue</button>
+                </div>
+            `;
+            document.body.appendChild(message);
+            
+            // Auto-remove after 5 seconds and reset buttons
+            setTimeout(() => {
+                if (message.parentElement) {
+                    resetDonationButtons();
+                    message.remove();
+                }
+            }, 5000);
+        }
+
+        // Reset all donation buttons to their original state
+        function resetDonationButtons() {
+            document.querySelectorAll('.donate-amount-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+        }
+
+        // Handle Enter key in custom amount input
+        customAmountInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                confirmBtn.click();
+            }
+        });
+
+        // Handle Escape key to cancel
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && customAmountContainer.style.display === 'block') {
+                cancelBtn.click();
+            }
+        });
+
+        // Force page to start at the top when loaded/reloaded
+        window.addEventListener('load', function() {
+            // Force scroll to top immediately
+            window.scrollTo(0, 0);
+            // Also ensure it happens after a brief delay in case of any conflicts
+            setTimeout(function() {
+                window.scrollTo(0, 0);
+            }, 10);
+        });
+
+        // Also handle page refresh/back button navigation
+        window.addEventListener('beforeunload', function() {
+            window.scrollTo(0, 0);
+        });
+
+        // Custom smooth scroll to bottom of page
+        function smoothScrollToBottom(e) {
+            e.preventDefault();
+            
+            // Scroll to the bottom of the page
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+
+        // Attach the scroll handler to the donate button
+        document.addEventListener('DOMContentLoaded', function() {
+            const donateBtn = document.querySelector('.donate-btn');
+            if (donateBtn) {
+                donateBtn.addEventListener('click', smoothScrollToBottom);
+            }
+        });
+
+        // Scroll-triggered animations using Intersection Observer
+        function initScrollAnimations() {
+            // Create intersection observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add animate class when element comes into view
+                        entry.target.classList.add('animate');
+                        // Optional: Stop observing after animation triggers
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1, // Trigger when 10% of element is visible
+                rootMargin: '0px 0px -50px 0px' // Trigger slightly before element fully enters
+            });
+
+            // Observe all elements that should animate on scroll
+            const animateElements = [
+                'main',
+                '.hero-section',
+                '.hero-text',
+                '.main-heading',
+                '.hero-description',
+                '.community-image',
+                '.quote-section',
+                '.quote-text',
+                '.quote-author',
+                '.donate-section',
+                '.donate-heading'
+            ];
+
+            animateElements.forEach(selector => {
+                const elements = document.querySelectorAll(selector);
+                elements.forEach(element => {
+                    observer.observe(element);
+                });
+            });
+        }
+
+        // Initialize scroll animations when page loads
+        document.addEventListener('DOMContentLoaded', initScrollAnimations);
+    </script>
 </body>
 </html>

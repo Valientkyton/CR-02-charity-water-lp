@@ -1,198 +1,1370 @@
-/* charity: water Brand Colors & Fonts
+/* Reset and basic styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-Primary Colors:
-- Yellow:     #FFC907
-- Blue:       #2E9DF7
+/* Import Google Font for Prachason Neue Mon (using similar font) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
 
-Secondary Colors:
-- Light Blue: #8BD1CB
-- Green:      #4FCB53
-- Orange:     #FF902A
-- Red:        #F5402C
-- Dark Green: #159A48
-- Pink:       #F16061
-
-Fonts:
-- Proxima Nova
-- Avenir
-
-*/
-
-/* 
-  Charity: Water Landing Page Styles
-  This CSS uses the provided color palette and beginner-friendly styles.
-*/
-
-/* Set up the main font and background color for the whole page */
+/* Body styling */
 body {
-  background-color: #f4f8fb; /* Soft light blue for a fresh look */
-  font-family: 'Avenir', 'Proxima Nova', Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  color: #222;
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    scroll-behavior: smooth;
+    transition: all 0.3s ease;
 }
 
-/* Add a slight shadow and rounded corners to each section for depth */
-section {
-  background: #fff; /* White background for sections */
-  border-radius: 12px; /* Rounded corners */
-  box-shadow: 0 2px 8px rgba(46, 157, 247, 0.07); /* Soft blue shadow */
-  margin: 24px 10px; /* Space between sections */
-  padding: 24px 16px;
+/* Header styling */
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 5px 0;
+    position: relative;
+    z-index: 100;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Hero Section Styles */
-.hero {
-  position: relative; /* Needed for overlay */
-  /* Set a background image that covers the whole section */
-  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80');
-  background-size: cover;      /* Make the image cover the whole area */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat;
-  color: #fff;                 /* White text for contrast */
-  text-align: center;          /* Center the text */
-  padding: 60px 20px;          /* Add space above and below */
-  border-radius: 0 0 16px 16px; /* Only round bottom corners */
-
-  /* Add a dark overlay for better text readability */
-  /* This uses a simple linear-gradient overlay */
-  background-blend-mode: darken;
-  background-color: rgba(46, 157, 247, 0.45); /* Blue overlay */
+header:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Make the headline bold and modern */
-.hero h1 {
-  font-size: 2.5em;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin-bottom: 15px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.15); /* Soft shadow for readability */
-}
-
-/* Style the subheadline */
-.hero p {
-  font-size: 1.2em;
-  margin-top: 0;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.12);
-}
-
-/* Story Section Styles */
-.story {
-  background-color: #8BD1CB; /* Secondary Light Blue */
-  color: #222;
-  text-align: center;
-  padding: 30px 20px;
-}
-
-/* Add accent color to section headings */
-h2 {
-  color: #2E9DF7; /* Primary blue */
-  margin-top: 0;
-  font-weight: bold;
-}
-
-/* Call-to-Action Section Styles */
-.call-to-action {
-  background-color: #FFC907; /* Primary Yellow */
-  color: #222;
-  text-align: center;
-  padding: 30px 20px;
-}
-
-/* Style the impact story image */
-.impact-image {
-  width: 100%;
-  max-width: 320px;
-  border-radius: 10px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 8px rgba(46, 157, 247, 0.10);
-}
-
-/* Donate Button Styles */
-.donate-button {
-  display: inline-block;
-  background-color: #4FCB53; /* Green */
-  color: #fff;
-  padding: 14px 32px;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-  font-size: 1.1em;
-  margin-top: 18px;
-  box-shadow: 0 2px 8px rgba(79, 203, 83, 0.10);
-  transition: background 0.3s, transform 0.2s;
-  border: none;
-  cursor: pointer;
-}
-
-/* Change button color when hovered */
-.donate-button:hover {
-  background-color: #159A48; /* Dark Green */
-  transform: translateY(-2px) scale(1.04); /* Slight lift */
-}
-
-/* Add some spacing between sections */
-section {
-  margin-bottom: 20px;
-}
-
-/* 
-  Media Queries for Responsive Design
-  Media queries help make your website look good on different screen sizes,
-  like phones (small screens) and computers (large screens).
-*/
-
-/* This media query applies styles when the screen is 600px wide or less (like on most phones) */
-@media (max-width: 600px) {
-  /* Make hero section padding smaller on small screens */
-  .hero {
-    padding: 32px 8px;
-    font-size: 1em;
-  }
-
-  /* Make headline font size smaller so it fits on small screens */
-  .hero h1 {
-    font-size: 1.4em;
-  }
-
-  /* Make subheadline font size smaller */
-  .hero p {
-    font-size: 1em;
-  }
-
-  /* Make story and call-to-action sections have less padding */
-  .story,
-  .call-to-action,
-  .donation-section {
-    padding: 14px 8px;
-  }
-
-  /* Make impact story image smaller and stack above the text */
-  .impact-content {
-    display: block; /* Stack items vertically */
-    text-align: center;
-  }
-
-  .impact-image {
-    width: 90%;    /* Make image take up most of the width */
-    max-width: 220px;
-  }
-}
-
-/* This media query applies styles when the screen is wider than 600px (like on tablets and computers) */
-@media (min-width: 601px) {
-  /* Show image and text side by side in the impact story */
-  .impact-content {
-    display: flex;           /* Place items in a row */
-    align-items: center;     /* Vertically center items */
-    justify-content: center; /* Center the whole group */
-    gap: 28px;               /* Space between image and text */
-    text-align: left;
-    max-width: 800px;
+.header-content {
+    max-width: 1200px;
     margin: 0 auto;
-  }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
 
-  .impact-image {
-    width: 300px;
+/* Logo section */
+.logo-section {
+    display: flex;
+    align-items: center;
+    margin-left: -20px;
+}
+
+.logo-horizontal {
+    height: 80px;
+    width: auto;
+    filter: brightness(1);
+    position: relative;
+}
+
+/* Remove the old logo and h1 styles since we're using horizontal logo */
+
+/* Donate button */
+.donate-btn {
+    background-color: #ffd700;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.donate-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.donate-btn:hover::before {
+    width: 200px;
+    height: 200px;
+}
+
+.donate-btn:hover {
+    background-color: #ffed4a;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateY(-3px) scale(1.05) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-3px) scale(1.05) rotate(1deg);
+    }
+    75% {
+        transform: translateY(-3px) scale(1.05) rotate(-1deg);
+    }
+}
+
+/* Navigation styling */
+nav {
+    background-color: #ffd700;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+}
+
+nav:hover::before {
+    transform: scaleY(1);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    gap: 90px;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    animation: nav-appear 0.8s ease-out 0.5s both;
+}
+
+@keyframes nav-appear {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 10px 30px;
+    background-color: #000;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    display: block;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    white-space: nowrap;
+    min-width: 140px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transform-origin: center;
+    animation: nav-item-appear 0.6s ease-out both;
+}
+
+@keyframes nav-item-appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.nav-menu li:nth-child(1) a {
+    animation-delay: 0.1s;
+}
+
+.nav-menu li:nth-child(2) a {
+    animation-delay: 0.2s;
+}
+
+.nav-menu li:nth-child(3) a {
+    animation-delay: 0.3s;
+}
+
+.nav-menu li:nth-child(4) a {
+    animation-delay: 0.4s;
+}
+
+.nav-menu li:nth-child(5) a {
+    animation-delay: 0.5s;
+}
+
+.nav-menu a:hover {
+    background-color: #333;
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    border: 2px solid #fff;
+}
+
+.nav-menu a:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Main content styling */
+main {
+    background-color: #87ceeb;
+    min-height: 700px;
+    padding: 40px 0 80px 0;
+    position: relative;
+    overflow: hidden;
+    /* Animation removed - will be triggered by scroll */
+}
+
+/* Add smooth transitions for scroll animations */
+main,
+.hero-text,
+.main-heading,
+.hero-description,
+.community-image,
+.quote-section,
+.quote-text,
+.quote-author,
+.donate-section,
+.donate-heading {
+    transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+}
+
+/* Scroll-triggered animation initial states */
+main:not(.animate) {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero-text:not(.animate) {
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.main-heading:not(.animate) {
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.hero-description:not(.animate) {
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.community-image:not(.animate) {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.quote-section:not(.animate) {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.quote-text:not(.animate) {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(3px);
+}
+
+.quote-author:not(.animate) {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.donate-section:not(.animate) {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.donate-heading:not(.animate) {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.8);
+}
+
+/* Keyframes for scroll-triggered animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDiagonal {
+    from {
+        transform: translate(100%, 100%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+
+
+/* Yellow diagonal accent at bottom right */
+main::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-left: 500px solid transparent;
+    border-bottom: 350px solid #ffd700;
+    z-index: 1;
+    /* Animation removed - will be triggered by scroll */
+}
+
+main.animate::after {
+    animation: slideInDiagonal 0.8s ease-out 0.3s both, morph-diagonal 8s ease-in-out infinite 1s;
+}
+
+@keyframes morph-diagonal {
+    0%, 100% {
+        transform: skewX(0deg) skewY(0deg);
+    }
+    25% {
+        transform: skewX(2deg) skewY(1deg);
+    }
+    50% {
+        transform: skewX(0deg) skewY(2deg);
+    }
+    75% {
+        transform: skewX(-1deg) skewY(0deg);
+    }
+}
+
+/* Hero section */
+.hero-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 80px;
+    margin-top: 1px;
+    perspective: 1000px;
+}
+
+.hero-text {
+    flex: 1;
+    padding-right: 40px;
+    transform-style: preserve-3d;
+    /* Animation removed - will be triggered by scroll */
+}
+
+.hero-text.animate {
+    animation: parallaxSlide 0.8s ease-out 0.2s both;
+}
+
+@keyframes parallaxSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-50px) rotateY(-15deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) rotateY(0deg);
+    }
+}
+
+/* Hero text */
+.hero-text {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.main-heading {
+    font-size: 70px;
+    font-weight: 800;
+    color: #ffd700;
+    line-height: 0.9;
+    margin-bottom: 25px;
+    font-family: 'Roboto', Arial, sans-serif;
+    letter-spacing: -2px;
+    /* Animation removed - will be triggered by scroll */
+    position: relative;
+    background: linear-gradient(45deg, #ffd700, #ffed4a, #ffd700);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.main-heading.animate {
+    animation: slideInLeft 0.8s ease-out 0.2s both, gradient-shift 3s ease-in-out infinite 1.5s;
+}
+
+@keyframes gradient-shift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.main-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ffd700, #ffed4a);
+    /* Animation removed - will be triggered by scroll */
+}
+
+.main-heading.animate::after {
+    animation: expandUnderline 0.8s ease-out 0.5s both;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes expandUnderline {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.hero-description {
+    font-size: 30px;
+    color: #000;
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    max-width: 600px;
+    font-weight: 400;
+    /* Animation removed - will be triggered by scroll */
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-description.animate {
+    animation: slideInLeft 0.8s ease-out 0.4s both;
+}
+
+.hero-description::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: #ffd700;
+    /* Animation removed - will be triggered by scroll */
+}
+
+.hero-description.animate::after {
+    animation: typewriter-cursor 1s infinite step-end 1s;
+}
+
+@keyframes typewriter-cursor {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+/* Hero image */
+.hero-image {
+    flex: 1.1;
+    text-align: center;
+}
+
+.community-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Prevent image from being too large on desktop */
+    max-height: 400px;
+    object-fit: cover;
+    /* Animation removed - will be triggered by scroll */
+    position: relative;
+}
+
+.community-image.animate {
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+/* Add floating particles effect */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255, 215, 0, 0.3), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255, 215, 0, 0.2), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255, 215, 0, 0.4), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255, 215, 0, 0.3), transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba(255, 215, 0, 0.2), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    /* Animation removed - will be triggered by scroll */
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-section.animate::before {
+    animation: float-particles 20s linear infinite;
+}
+
+@keyframes float-particles {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Quote section */
+.quote-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    text-align: center;
+    z-index: 2;
+    /* Animation removed - will be triggered by scroll */
+}
+
+.quote-section.animate {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.quote-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(ellipse, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: glow-pulse 4s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes glow-pulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* Large quotation marks positioned differently */
+.quote-section blockquote::before {
+    content: '“';
+    font-size: 150px;
+    color: #000;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    font-family: Georgia, serif;
+    line-height: 1;
+    animation: float 3s ease-in-out infinite;
+}
+
+.quote-section.animate blockquote::before {
+    animation: rotateIn 0.8s ease-out 0.4s both, float 3s ease-in-out infinite 1s;
+}
+
+.quote-section blockquote::after {
+    content: '”';
+    font-size: 150px;
+    color: #000;
+    position: absolute;
+    bottom: -90px;
+    right: -20px;
+    font-family: Georgia, serif;
+    line-height: 1;
+    animation: float 3s ease-in-out infinite 0.5s;
+}
+
+.quote-section.animate blockquote::after {
+    animation: rotateIn 0.8s ease-out 0.6s both, float 3s ease-in-out infinite 1.2s;
+}
+
+.quote-section blockquote {
+    background-color: transparent;
+    padding: 20px;
+    position: relative;
+    margin: 0;
+}
+
+.quote-text {
+    font-size: 30px;
+    color: #000;
+    margin: 30px 40px 20px 40px;
+    font-weight: 400;
+    line-height: 1.3;
+    font-family: 'Roboto', Arial, sans-serif;
+    position: relative;
+    /* Animation removed - will be triggered by scroll */
+}
+
+.quote-text.animate {
+    animation: text-reveal 1s ease-out 0.3s both;
+}
+
+@keyframes text-reveal {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(3px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+.quote-author {
+    font-size: 20px;
+    color: #000;
+    font-weight: 700;
+    font-style: normal;
+    margin-top: 15px;
+    display: block;
+    font-family: 'Roboto', Arial, sans-serif;
+    /* Animation removed - will be triggered by scroll */
+    position: relative;
+}
+
+.quote-author.animate {
+    animation: author-reveal 0.6s ease-out 0.5s both;
+}
+
+@keyframes author-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Donate section */
+.donate-section {
+    max-width: 1000px;
+    margin: 80px auto 0 auto;
+    padding: 0 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    /* Animation removed - will be triggered by scroll */
+}
+
+.donate-section.animate {
+    animation: section-reveal 0.8s ease-out 0.2s both;
+}
+
+@keyframes section-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.donate-heading {
+    font-size: 48px;
+    font-weight: 800;
+    color: #000;
+    margin-bottom: 20px;
+    font-family: 'Roboto', Arial, sans-serif;
+    /* Animation removed - will be triggered by scroll */
+    position: relative;
+}
+
+.donate-heading.animate {
+    animation: heading-bounce 0.8s ease-out 0.3s both;
+}
+
+@keyframes heading-bounce {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(5px) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.donate-description {
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 40px;
+    font-weight: 400;
+    line-height: 1.4;
+    font-family: 'Roboto', Arial, sans-serif;
+    animation: description-slide 0.8s ease-out 0.4s both;
+    position: relative;
+}
+
+@keyframes description-slide {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.donate-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.donate-amount-btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 120px;
+    position: relative;
+    overflow: hidden;
+}
+
+.donate-amount-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.6) 0%, transparent 70%);
+    transition: all 0.4s ease;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.donate-amount-btn:hover::before {
+    width: 200px;
+    height: 200px;
+}
+
+.donate-amount-btn:hover {
+    background-color: #333;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+    }
+}
+
+/* Custom amount input styling */
+.custom-amount-container {
+    margin-top: 30px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: scale(0.95);
+    opacity: 0;
+    animation: container-appear 0.6s ease-out 0.3s both;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+@keyframes container-appear {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.custom-amount-input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.currency-symbol {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    margin-right: 5px;
+    transition: all 0.3s ease;
+    animation: symbol-glow 0.5s ease-out;
+}
+
+.currency-symbol:hover {
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    transform: scale(1.1);
+}
+
+@keyframes symbol-glow {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.custom-amount-input {
+    font-size: 24px;
+    padding: 12px 20px;
+    border: 2px solid #ffd700;
+    border-radius: 5px;
+    text-align: center;
+    width: 200px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.custom-amount-input:focus {
+    outline: none;
+    border-color: #000;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
+    animation: focus-ring 0.3s ease-out;
+}
+
+@keyframes focus-ring {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
+    }
+}
+
+.custom-amount-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.confirm-amount-btn, .cancel-amount-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-amount-btn {
+    background-color: #ffd700;
+    color: #000;
+}
+
+.confirm-amount-btn:hover {
+    background-color: #ffed4a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cancel-amount-btn {
+    background-color: #ccc;
+    color: #666;
+}
+
+.cancel-amount-btn:hover {
+    background-color: #bbb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.suggested-amounts {
+    text-align: center;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.suggested-text {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.suggested-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.suggested-btn {
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.suggested-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 215, 0, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.suggested-btn:hover::before {
+    width: 100px;
+    height: 100px;
+}
+
+.suggested-btn:hover {
+    background-color: #ffd700;
+    color: #000;
+    border-color: #ffd700;
+    transform: translateY(-5px) scale(1.1);
+    animation: bounce 0.6s ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(-5px) scale(1.1);
+    }
+    50% {
+        transform: translateY(-8px) scale(1.15);
+    }
+}
+
+/* Donation confirmation modal */
+.donation-confirmation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.5s ease;
+    backdrop-filter: blur(5px);
+}
+
+.confirmation-content {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease, sparkle 2s ease-in-out infinite 1s;
+    position: relative;
+    overflow: hidden;
+}
+
+.confirmation-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(2px 2px at 20% 30%, rgba(255, 215, 0, 0.4), transparent),
+        radial-gradient(2px 2px at 80% 70%, rgba(255, 215, 0, 0.3), transparent),
+        radial-gradient(1px 1px at 50% 20%, rgba(255, 215, 0, 0.5), transparent),
+        radial-gradient(1px 1px at 70% 80%, rgba(255, 215, 0, 0.4), transparent);
+    animation: sparkle-move 3s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2), 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+}
+
+@keyframes sparkle-move {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-100%) rotate(360deg);
+    }
+}
+
+.confirmation-content h3 {
+    color: #ffd700;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.confirmation-content p {
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.close-confirmation {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.close-confirmation::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 215, 0, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.close-confirmation:hover::before {
+    width: 150px;
+    height: 150px;
+}
+
+.close-confirmation:hover {
+    background-color: #333;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================
+   Responsive Design Fixes
+   ========================= */
+@media (max-width: 480px) {
+  /* Make header content stack vertically on very small screens */
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 0 8px;
   }
+  .logo-horizontal {
+    height: 40px;
+  }
+  .donate-btn {
+    font-size: 13px;
+    padding: 10px 12px;
+    min-width: 90px;
+  }
+  nav {
+    padding: 10px 0;
+  }
+  .nav-menu {
+    gap: 5px;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 5px;
+  }
+  .nav-menu a {
+    font-size: 11px;
+    padding: 7px 8px;
+    min-width: 60px;
+    min-height: 36px;
+  }
+  main {
+    padding: 10px 0 20px 0;
+  }
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 0 5px;
+  }
+  .hero-text {
+    padding-right: 0;
+    margin-bottom: 15px;
+  }
+  .main-heading {
+    font-size: 22px;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+  }
+  .hero-description {
+    font-size: 13px;
+    max-width: 100%;
+    line-height: 1.3;
+  }
+  .hero-image {
+    margin-top: 10px;
+    min-height: 120px;
+  }
+  .community-image {
+    max-width: 100%;
+    min-height: 120px;
+    width: 100%;
+    border-radius: 8px;
+  }
+  .quote-section {
+    padding: 0 5px;
+  }
+  .quote-section blockquote::before,
+  .quote-section blockquote::after {
+    font-size: 32px;
+    left: -2px;
+    right: -2px;
+    top: -5px;
+    bottom: -5px;
+  }
+  .quote-text {
+    font-size: 13px;
+    margin: 10px 10px 8px 10px;
+    line-height: 1.3;
+  }
+  .quote-author {
+    font-size: 12px;
+  }
+  .donate-section {
+    padding: 0 5px;
+    margin-top: 20px;
+  }
+  .donate-heading {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .donate-description {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .donate-buttons {
+    gap: 8px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .donate-amount-btn {
+    padding: 10px 8px;
+    font-size: 13px;
+    min-width: 70px;
+  }
+  .custom-amount-container {
+    margin-top: 10px;
+    padding: 10px;
+  }
+  .custom-amount-input {
+    font-size: 14px;
+    width: 100px;
+    padding: 6px 8px;
+  }
+  .custom-amount-buttons {
+    gap: 8px;
+  }
+  .confirm-amount-btn, .cancel-amount-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  .suggested-text {
+    font-size: 11px;
+  }
+  .suggested-btn {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+}
+/* End responsive fixes */
+
+/* Additional Creative Effects */
+
+/* Add gradient text effect to main heading */
+.main-heading {
+    font-size: 70px;
+    font-weight: 800;
+    color: #ffd700;
+    line-height: 0.9;
+    margin-bottom: 25px;
+    font-family: 'Roboto', Arial, sans-serif;
+    letter-spacing: -2px;
+    animation: slideInLeft 0.8s ease-out 0.2s both;
+    position: relative;
+    background: linear-gradient(45deg, #ffd700, #ffed4a, #ffd700);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: slideInLeft 0.8s ease-out 0.2s both, gradient-shift 3s ease-in-out infinite 4s;
+}
+
+/* Add smooth color transition to body */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    scroll-behavior: smooth;
+    transition: all 0.3s ease;
+}
+
+.quote-section:hover {
+    transform: translateY(-3px);
+    transition: all 0.3s ease;
+}
+
+.donate-section:hover {
+    transform: translateY(-3px);
+    transition: all 0.3s ease;
+}
+
+/* Add animated background pattern */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(135, 206, 235, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 215, 0, 0.02) 0%, transparent 50%);
+    animation: background-float 20s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes background-float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+        transform: translateY(-20px) rotate(120deg);
+    }
+    66% {
+        transform: translateY(-10px) rotate(240deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(360deg);
+    }
+}
+
+/* Keyframes for floating quote marks */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
