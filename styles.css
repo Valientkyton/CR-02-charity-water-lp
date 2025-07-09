@@ -1472,8 +1472,8 @@ main.animate::after {
   
   .nav-menu {
     gap: 10px;
-    flex-direction: column;
-    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .nav-menu a {
@@ -1567,8 +1567,8 @@ main.animate::after {
   }
   .nav-menu {
     gap: 5px;
-    flex-direction: column;
-    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: center;
     padding: 0 5px;
   }
   .nav-menu a {
